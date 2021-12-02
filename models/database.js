@@ -4,10 +4,10 @@ function connectDatabase() {
 
     try {
         const db = mysql.createConnection({
-            host: '127.0.0.1',
-            user: 'user',
-            password: 'P@ssW0rd',
-            database: 'movies'
+            host: process.env.HOST,
+            user: process.env.USER,
+            password: process.env.PASSWORD,
+            database: process.env.DATABASE
         });
 
         db.connect(function (err) {
