@@ -23,8 +23,17 @@ exports.get = async function (req, res, next) {
 
     try {
 
+        const id = req.params.id;
+        
+        let query;
+        if (id) {
+            query = `SELECT * from movies where id = ${id}`;
+        } else {
+            query = `SELECT * from movies`;
+        }
+
         //fetch data from database
-        database.query('SELECT * from movies', function (error, results, fields) {
+        database.query(query, function (error, results, fields) {
             if (error) {
                 res.status(500).send({
                     success: false,

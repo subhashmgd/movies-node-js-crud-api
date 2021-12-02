@@ -100,9 +100,10 @@ const upload_image = (req, res, next) => {
     }
 }
 
-router.get('/fetch', controller_movies.get);
-router.post('/add', upload_image, movie_validator, controller_movies.add);
-router.delete('/delete/:id', controller_movies.delete);
-router.put('/update/:id', movie_validator, controller_movies.update);
+router.get('/', controller_movies.get);
+router.get('/:id', controller_movies.get);
+router.post('/', upload_image, movie_validator, controller_movies.add);
+router.delete('/:id', controller_movies.delete);
+router.put('/:id', movie_validator, controller_movies.update);
 
 module.exports = router;
